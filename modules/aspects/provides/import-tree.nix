@@ -59,7 +59,7 @@
       you are also free to create your own auto-imports layout following the implementation of these.
   '';
 
-  den._.import-tree.__functor =
+  den.provides.import-tree.__functor =
     _: root:
     { class, aspect-chain }:
     let
@@ -68,7 +68,7 @@
     in
     if builtins.pathExists path then aspect else { };
 
-  den._.import-tree.provides = {
+  den.provides.import-tree.provides = {
     host = root: { host, ... }: den._.import-tree "${toString root}/${host.name}";
     home = root: { home, ... }: den._.import-tree "${toString root}/${home.name}";
     user = root: { user, ... }: den._.import-tree "${toString root}/${user.name}";

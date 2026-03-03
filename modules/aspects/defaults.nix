@@ -1,10 +1,9 @@
+{ den, lib, ... }:
 {
-  den =
-    { lib, ... }:
-    {
-      imports = [ (lib.mkAliasOptionModule [ "default" ] [ "ctx" "default" ]) ];
-
-      ctx.default.conf = _: { };
-
-    };
+  options.den.default = lib.mkOption {
+    description = "Default context";
+    type = den.lib.aspects.types.aspectSubmodule;
+    default = { };
+  };
+  config.den.ctx.default.conf = _: den.default;
 }
